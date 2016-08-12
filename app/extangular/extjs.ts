@@ -1,3 +1,4 @@
+/// <reference path="../../node_modules/retyped-extjs-tsd-ambient/ExtJS.d.ts" />
 import { 
 	Component, 
 	Input, 
