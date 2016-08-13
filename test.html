@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+
+    <title>mod</title><html manifest="">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+
+    <title>mod</title>
+
+	<script src="ext/build/ext-modern-all-debug.js"></script>
+	<script src="app/extangular/fittoparent.js"></script>
+	<link rel="stylesheet" href="resources/mod-all.css"/>
+
+<!--
+	<script src="ext/build/modern/theme-material/theme-material.js"></script>
+	<link rel="stylesheet" href="ext/build/modern/theme-material/resources/theme-material-all.css"/>
+	<script src="ext/packages/pivot/build/modern/pivot-debug.js"></script>
+	<script src="ext/packages/exporter/build/${toolkit.name}/exporter.js"></script>
+
+	<script src="ext/build/packages/charts/modern/charts-debug.js"></script>
+	<script src="ext/packages/calendar/build/modern/calendar.js"></script>
+	<script src="ext/build/packages/d3/modern/d3-debug.js"></script>
+-->
+<script>
+Ext.application({
+	name: 'Tutorial',
+	launch: function() {
+//		Ext.Msg.alert('Hi', 'Hello World');
+
+		Ext.Viewport.add(
+			{
+				xtype: 'grid',
+				//left: 10, top: 10, width: 800, height: 850,
+				//cls: 'demo-solid-background',
+				shadow: true, 
+				//controller: 'grid-bigdata',
+				//grouped: true,
+				//rowLines: true,
+				//store: new SalesStore({}).extjsObject,
+				store: Ext.create('Ext.data.ArrayStore', {
+						alias: 'store.sales',
+						autoLoad:   true,
+						proxy: {
+							type: 'ajax',
+							url: 'data/sales.json',
+							reader: {
+								type: 'json',
+								rootProperty: 'rows'
+							}
+						},
+						filters: [
+								function(item) {
+										return item.get('year') >= 2012;
+								}
+						],
+						fields: [
+								{name: 'orderid',       type: 'int'},
+								{name: 'salesperson',   type: 'string'},
+								{name: 'country',       type: 'string'},
+								{name: 'orderdate',     type: 'date', dateFormat: 'd/m/Y'},
+								{name: 'amount',        type: 'int'},
+								{
+										name: 'person-range',
+										convert: function(v, record){
+												if(/^[a-j]/i.test(record.get('salesperson'))) return 'A-J';
+												if(/^[k-s]/i.test(record.get('salesperson'))) return 'K-S';
+												if(/^[t-z]/i.test(record.get('salesperson'))) return 'T-Z';
+												return v;
+										}
+								},{
+										name: 'year',
+										convert: function(v, record){
+												return Ext.Date.format(record.get('orderdate'), "Y");
+										}
+								}
+						]
+				}),
+				columns: [
+					{
+						text: 'salesperson',
+						dataIndex: 'salesperson'
+					}
+				],
+				// plugins: [
+				// 	{ type: 'grideditable' }, 
+				// 	{ type: 'gridviewoptions' }, 
+				// 	{ type: 'pagingtoolbar' }, 
+				// 	{ type: 'summaryrow'}, 
+				// 	{ type: 'columnresizing' }, 
+				// 	{ type: 'rowexpander' }
+				// ]
+			}
+
+			// { 
+			// 	xtype: 'pivotgrid',
+			// 	//left: 10, top: 10, width: 800, height: 850,
+			// 	startRowGroupsCollapsed: false,
+			// 	startColGroupsCollapsed: false,
+			// 	//cls: 'demo-solid-background',
+			// 	shadow: true,
+			// 	id: 'pg',
+			// 	style: { border: '10px solid #e9e9e9' },
+			// 	matrix: {
+			// 		type: 'local',
+			// 		viewLayoutType: 'outline',
+			// 		//store: new SalesStore({}).extjsObject,
+			// 		store: Ext.create('Ext.data.ArrayStore', {
+			// 			alias: 'store.sales',
+			// 			autoLoad:   true,
+			// 			proxy: {
+			// 				type: 'ajax',
+			// 				url: 'data/sales.json',
+			// 				reader: {
+			// 					type: 'json',
+			// 					rootProperty: 'rows'
+			// 				}
+			// 			},
+			// 			filters: [
+			// 					function(item) {
+			// 							return item.get('year') >= 2012;
+			// 					}
+			// 			],
+			// 			fields: [
+			// 					{name: 'orderid',       type: 'int'},
+			// 					{name: 'salesperson',   type: 'string'},
+			// 					{name: 'country',       type: 'string'},
+			// 					{name: 'orderdate',     type: 'date', dateFormat: 'd/m/Y'},
+			// 					{name: 'amount',        type: 'int'},
+			// 					{
+			// 							name: 'person-range',
+			// 							convert: function(v, record){
+			// 									if(/^[a-j]/i.test(record.get('salesperson'))) return 'A-J';
+			// 									if(/^[k-s]/i.test(record.get('salesperson'))) return 'K-S';
+			// 									if(/^[t-z]/i.test(record.get('salesperson'))) return 'T-Z';
+			// 									return v;
+			// 							}
+			// 					},{
+			// 							name: 'year',
+			// 							convert: function(v, record){
+			// 									return Ext.Date.format(record.get('orderdate'), "Y");
+			// 							}
+			// 					}
+			// 			]
+			// 		}),
+			// 		rowGrandTotalsPosition: 'first',
+			// 		leftAxis: [{
+			// 				dataIndex: 'country',
+			// 				direction: 'DESC',
+			// 				header: 'Countries',
+			// 				width: 150
+			// 		}],
+			// 		topAxis: [{
+			// 				dataIndex: 'salesperson',
+			// 				direction: 'ASC'
+			// 		}],
+			// 		aggregate: [{
+			// 				dataIndex: 'amount',
+			// 				header: 'Total',
+			// 				aggregator: 'sum',
+			// 				width: 120
+			// 		}]
+			// 	}
+			// }
+		);
+
+	}
+});
+</script>
+</head>
+<body>
+</body>
+</html>

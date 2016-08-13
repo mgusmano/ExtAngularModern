@@ -35,6 +35,7 @@ Ext.define('FitToParent',
         Ext.apply(this, config);
     },
     init: function (c) {
+			debugger;
         this.component = c;
         var me = this;
         c.on('render', function (c) {

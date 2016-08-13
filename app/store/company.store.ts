@@ -6,6 +6,14 @@ export class CompanyStore extends ExtJSClass {
 		let extend: any = 'Ext.data.Store';
 		let defineConfig: any = {
 			autoLoad:   true,
+			proxy: {
+				type: 'ajax',
+				reader: {
+					type: 'json',
+					implicitIncludes: false
+				},
+				url: 'data/company.json'
+			},
 			fields: [
 				{name: 'name'},
 				{name: 'phone' },
@@ -37,19 +45,9 @@ export class CompanyStore extends ExtJSClass {
 					}
 				}
 			],
-			proxy: {
-				type: 'ajax',
-				reader: {
-					type: 'json',
-					implicitIncludes: false
-				},
-				url: 'data/company.json'
-			},
-
 			validators: {
 					name: 'presence'
 			},
-
 			// Override to keep the last 10 prices in the trend field
 			set: function(fieldName, value) {
 				if (fieldName === 'price') {
