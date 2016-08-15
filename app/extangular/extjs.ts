@@ -11,14 +11,15 @@ import {
 @Component({
   selector: 'extjs',
 	inputs: [ 'xtype', 'config'],
-	outputs: [ 'ready', 'click', 'selectionchange'],
+	outputs: [ 'ready' ], //'click', 'selectionchange'],
 	template: ``
 })
 export class ExtJS {
 	private xtype: string;
 	private config: any = {};
-	private click: EventEmitter<any> = new EventEmitter();
-	private selectionchange: EventEmitter<any> = new EventEmitter();
+	
+	//private click: EventEmitter<any> = new EventEmitter();
+	//private selectionchange: EventEmitter<any> = new EventEmitter();
 
 	public extjsObject: any;
 	private rootElement: any;
@@ -44,54 +45,59 @@ export class ExtJS {
 				renderTo: me.rootElement,
 
 				text: me.text,
-				listeners: {
-					scope: me,
-					selectionchange: function(tree, node) {
-						var o:any = {};
-						o.tree = tree;
-						o.node = node;
-						me.selectionchange.next(o);
-					},
-					click: function(o, e, eOpts) {
-						//me.exttap.emit({});
-						me.click.next();
+				// listeners: {
+				// 	scope: me,
+				// 	selectionchange: function(tree, node) {
+				// 		var o:any = {};
+				// 		o.tree = tree;
+				// 		o.node = node;
+				// 		me.selectionchange.next(o);
+				// 	},
+				// 	click: function(o, e, eOpts) {
+				// 		//me.exttap.emit({});
+				// 		me.click.next();
 
-						// setTimeout(function() {
-						// 	me.exttap.emit({})
-						// }, 1000);
-						// me.exttap.emit({
-						// 	o: o,
-						// 	e: e,
-						// 	eOpts: eOpts
-						// })
-					}
-				}
+				// 		// setTimeout(function() {
+				// 		// 	me.exttap.emit({})
+				// 		// }, 1000);
+				// 		// me.exttap.emit({
+				// 		// 	o: o,
+				// 		// 	e: e,
+				// 		// 	eOpts: eOpts
+				// 		// })
+				// 	}
+				// }
 			};
+			// o.on('click', function(o, e, eOpts) {
+			// 			me.click.next();
+			// });
+
 			//o.plugins = [{ ptype: 'fittoparent' }]; 
 			//o.height = 800; 
-
-
 			//if (me.fit === true) {
 			//	o.plugins = [ 'fittoparent' ]; 
 			//} else {
 			//	o.height = 300; 
 			//};
+			//if (me.listeners !== [] ) {o.listeners = me.listeners; };
 			if (me.plugins !== [] ) {o.plugins = me.plugins; };
-			if (me.fit === true ) {
-				if (o.plugins != undefined) {
-					o.plugins.push({ ptype: 'fittoparent' });
-				} else {
-					o.plugins = [{ ptype: 'fittoparent' }]; 
-				}
-			} 
-			else {
-			//	o.height = 300; 
-			};
-
-
+			// if (me.fit === true ) {
+			// 	if (o.plugins != undefined) {
+			// 		o.plugins.push({ ptype: 'fittoparent' });
+			// 	} else {
+			// 		o.plugins = [{ ptype: 'fittoparent' }]; 
+			// 	}
+			// } 
+			// else {
+			// //	o.height = 300; 
+			// };
 			if (me.config !== {} ) {
 				Ext.apply(o, me.config);
 			};
+			//debugger;
+			// o.listeners('click') = function(o, e, eOpts) {
+			// 			me.click.next();
+			// };
 			me.extjsObject = Ext.create(o);
 			me.ready.next(me);
 		}

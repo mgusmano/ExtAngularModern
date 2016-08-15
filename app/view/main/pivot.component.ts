@@ -13,6 +13,7 @@ export class PivotComponent {
 	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 	private pivotgridConfig:any;
 	constructor() {
+
 		this.pivotgridConfig = { 
 			left: this.border, top: this.border,
 			style: { width: this.size, height: this.size },
@@ -45,5 +46,6 @@ export class PivotComponent {
 				]
 			}
 		};
+		
 	}
 }

@@ -13,6 +13,9 @@ import { BasicComponent } from './view/main/basic.component';
 import { ListComponent } from './view/main/list.component';
 import { PivotComponent } from './view/main/pivot.component';
 import { GridComponent } from './view/main/grid.component';
+import { AnalyzeComponent } from './view/main/analyze.component';
+import { ChartComponent } from './view/main/chart.component';
+import { WidgetGridComponent } from './view/main/widgetgrid.component';
 
 const appRoutes: Routes = [
 	{ path: '', redirectTo: '/basic', pathMatch: 'full' },
@@ -20,16 +23,21 @@ const appRoutes: Routes = [
 	{ path: 'list', component: ListComponent },
 	{ path: 'pivot', component: PivotComponent },
 	{ path: 'grid', component: GridComponent },
+	{ path: 'analyze', component: AnalyzeComponent },
+	{ path: 'chart', component: ChartComponent },
+	{ path: 'widgetgrid', component: WidgetGridComponent },
 ];
 export const routing = RouterModule.forRoot(appRoutes);
 
 @NgModule({
-  imports:      [ BrowserModule, routing ], 
-  declarations: [ MainMComponent, NavigationComponent, 
-									BasicComponent, ListComponent, PivotComponent, GridComponent,
-									ExtJS, ExtJSPivotGrid
-								],
-  bootstrap:    [ MainMComponent ]
+	imports: [ BrowserModule, routing ], 
+	declarations: [ 
+		MainMComponent, NavigationComponent, 
+		BasicComponent, ListComponent, PivotComponent, GridComponent, 
+		AnalyzeComponent, ChartComponent, WidgetGridComponent,
+		ExtJS, ExtJSPivotGrid
+	],
+  bootstrap: [ MainMComponent ]
 })
 export class AppModuleM { }
 
