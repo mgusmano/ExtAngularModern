@@ -31,8 +31,18 @@ export class WidgetStore extends ExtJSClass implements OnInit  {
 			data: (function() {
 					var result = [],
 							i;
+					var j,s = [];for (j = 0; j < 20; j++) { s.push(Ext.Number.randomInt(-10, 10)); }
 					for (i = 0; i < 8; i++) {
-							result.push([i + 1, 'Record ' + (i + 1), Ext.Number.randomInt(0, 100) / 100, generateSequence(), generateSequence(), generateSequence(), generateSequence(20, 1, 10), generateSequence(4, 10, 20), generateSequence(), generateSequence(20, -1, 1)]);
+							result.push([i + 1, 'Record ' + (i + 1), Ext.Number.randomInt(0, 100) / 100, 
+							s, s, s, s, s, s, s
+							// generateSequence(), 
+							// generateSequence(), 
+							// generateSequence(), 
+							// generateSequence(20, 1, 10), 
+							// generateSequence(4, 10, 20), 
+							// generateSequence(), 
+							// generateSequence(20, -1, 1)
+							]);
 					}
 					return result;
 			})()

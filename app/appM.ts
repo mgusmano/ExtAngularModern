@@ -9,23 +9,26 @@ import { ExtJSPivotGrid } from './extangular/extjs.pivotgrid';
 
 import { MainMComponent } from './view/main/mainm.component';
 import { NavigationComponent } from './view/main/navigation.component';
-import { BasicComponent } from './view/main/basic.component';
+
 import { ListComponent } from './view/main/list.component';
-import { PivotComponent } from './view/main/pivot.component';
 import { GridComponent } from './view/main/grid.component';
-import { AnalyzeComponent } from './view/main/analyze.component';
-import { ChartComponent } from './view/main/chart.component';
 import { WidgetGridComponent } from './view/main/widgetgrid.component';
+import { ChartComponent } from './view/main/chart.component';
+import { PieComponent } from './view/main/pie.component';
+import { PivotComponent } from './view/main/pivot.component';
+import { AnalyzeComponent } from './view/main/analyze.component';
+import { BasicComponent } from './view/main/basic.component';
 
 const appRoutes: Routes = [
-	{ path: '', redirectTo: '/basic', pathMatch: 'full' },
-	{ path: 'basic', component: BasicComponent },
+	{ path: '', redirectTo: '/list', pathMatch: 'full' },
 	{ path: 'list', component: ListComponent },
-	{ path: 'pivot', component: PivotComponent },
 	{ path: 'grid', component: GridComponent },
-	{ path: 'analyze', component: AnalyzeComponent },
-	{ path: 'chart', component: ChartComponent },
 	{ path: 'widgetgrid', component: WidgetGridComponent },
+	{ path: 'chart', component: ChartComponent },
+	{ path: 'pie', component: PieComponent },
+	{ path: 'pivot', component: PivotComponent },
+	{ path: 'analyze', component: AnalyzeComponent },
+	{ path: 'basic', component: BasicComponent },
 ];
 export const routing = RouterModule.forRoot(appRoutes);
 
@@ -33,8 +36,10 @@ export const routing = RouterModule.forRoot(appRoutes);
 	imports: [ BrowserModule, routing ], 
 	declarations: [ 
 		MainMComponent, NavigationComponent, 
-		BasicComponent, ListComponent, PivotComponent, GridComponent, 
-		AnalyzeComponent, ChartComponent, WidgetGridComponent,
+		ListComponent, GridComponent, WidgetGridComponent,
+		ChartComponent, PieComponent,
+		PivotComponent, AnalyzeComponent,  
+		BasicComponent, 
 		ExtJS, ExtJSPivotGrid
 	],
   bootstrap: [ MainMComponent ]

@@ -17,9 +17,6 @@ export class WidgetGridComponent {
 		this.gridConfig = { 
 			left: this.border, top: this.border,
 			style: { width: this.size, height: this.size },
-			//left: 10, top: 10,
-			//style: { width: '700px', height: '400px' },
-
 			shadow: true, 
 			store: new WidgetStore({}).extjsObject,
 
@@ -38,6 +35,7 @@ export class WidgetGridComponent {
 				},
 				{
 					text: 'sparkline',
+					width: 400,
 					dataIndex: 'sequence2',
 					cell: {
 							xtype: 'widgetcell',
