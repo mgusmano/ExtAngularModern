@@ -5,15 +5,34 @@ import { SalesStore } from '../../store/sales.store';
 @Component({
   selector: '',
 	template: `
-		<extjs [xtype]='"grid"'
-			[config]='gridConfig'
-		></extjs>
+		<extjs-grid
+			[config]='gridConfig' 
+			(ready)="readyGrid($event)"
+			(select)="selectGrid($event)"
+			(columnsort)="columnsortGrid($event)"
+		></extjs-grid>
 	`
 })
 export class GridComponent { 
 	private border:any = 20;
 	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 	private gridConfig:any;
+
+	selectGrid(o) {
+		console.log(o.record);
+	}
+
+	columnsortGrid(o) {
+		console.log(o.control);
+		console.log(o.column);
+		console.log(o.direction);
+		console.log(o.eOpts);
+	}
+
+	readyGrid(theGrid) {
+		//console.log(theGrid);
+	}
+
 	constructor() {
 		this.gridConfig = { 
 			left: this.border, top: this.border,
@@ -24,11 +43,12 @@ export class GridComponent {
 			//rowLines: true,
 			store: new SalesStore({}).extjsObject,
 			columns: [
-				{
-					text: 'salesperson',
-					width:200,
-					dataIndex: 'salesperson'
-				}
+				{ text: 'salesperson',width:200,	dataIndex: 'salesperson' },
+        { text: 'Amount', dataIndex: 'amount' },
+        { text: 'Country', width: 125, dataIndex: 'country'},
+        { text: 'Orderdate', width: 300, dataIndex: 'orderdate' },
+        { text: 'Person - range', width: 150, dataIndex: 'person-range' },
+        { text: 'Year', flex: 1, dataIndex: 'year' }
 			],
 			 plugins: [
 				{ type: 'grideditable' }, 
@@ -45,29 +65,22 @@ export class GridComponent {
 			// 		beforedocumentsave: 'onBeforeDocumentSave'
 			// },
 
-			// items: [{
-			// 		docked: 'top',
-			// 		xtype: 'toolbar',
-			// 		shadow: false,
-			// 		items: [{
-			// 				xtype: 'button',
-			// 				text: 'Export to ...',
-			// 				handler: 'exportTo'
-			// 		}]
-			// }],
-
-			// Instruct rows to create view models so we can use data binding
-			// itemConfig: {
-			// 		viewModel: {
-			// 				type: 'grid-bigdata-row'
-			// 		},
-			// 		body: {
-			// 				tpl: '<img src="{avatar}" height="100px" style="float:left;margin:0 10px 5px 0"><b>{name}<br></b>{dob:date}'
-			// 		}
-			// },
-
-
+			items: [{
+					docked: 'top',
+					xtype: 'toolbar',
+					shadow: false,
+					items: [{
+							xtype: 'button',
+							text: 'Export to ...',
+							//scope: this,
+							handler: this.exportTo
+					}]
+			}]
 		};
-
 	}
+
+	private exportTo() {
+		alert('exportTo');
+	}
+
 }

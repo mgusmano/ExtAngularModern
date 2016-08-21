@@ -4,12 +4,23 @@ import { WidgetStore } from '../../store/widget.store';
 @Component({
   selector: '',
 	template: `
-		<extjs [xtype]='"grid"'
-			[config]='gridConfig'
-		></extjs>
+		<extjs-grid
+			[config]='gridConfig' 
+			(ready)="readyGrid($event)"
+			(select)="selectGrid($event)"
+		></extjs-grid>
 	`
 })
 export class WidgetGridComponent { 
+
+	selectGrid(o) {
+		console.log(o.record);
+	}
+
+	readyGrid(theGrid) {
+		console.log(theGrid);
+	}
+
 	private border:any = 20;
 	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 	private gridConfig:any;
@@ -26,17 +37,17 @@ export class WidgetGridComponent {
 				markDirty: false
 			},
 			trackMouseOver: false,
-			disableSelection: true,
+			//disableSelection: true,
 			columns: [
 				{
 					text: 'sparkline Data',
 					width: 400,
-					dataIndex: 'sequence2'
+					dataIndex: 's2'
 				},
 				{
 					text: 'sparkline',
 					width: 400,
-					dataIndex: 'sequence2',
+					dataIndex: 's2',
 					cell: {
 							xtype: 'widgetcell',
 							forceWidth: true,

@@ -4,10 +4,11 @@ import { CompanyStore } from '../../store/company.store';
 @Component({
   selector: '',
 	template: `
-		<extjs [xtype]='"list"' 
+		<extjs-list
 			[config]='listConfig' 
 			(ready)="readyList($event)"
-		></extjs>
+			(select)="selectList($event)"
+		></extjs-list>
 	`
 })
 export class ListComponent { 
@@ -20,8 +21,21 @@ export class ListComponent {
 		showAnimation: 'flip',
 		rowLines: true,
 		itemTpl: '{name} - {phone}',
-		store: new CompanyStore({}).extjsObject
+		store: new CompanyStore({}).extjsObject,
+
+		// listeners: {
+		// 	select: this.onSelect,
+		// }
+
 	};
+
+	selectList(o) {
+		console.log(o.record);
+	}
+
+	// onSelect(list, record, eOpts) {
+	// 	console.log(record);
+	// }
 
 	readyList(theList) {
 		//console.log(theList);

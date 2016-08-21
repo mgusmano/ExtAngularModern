@@ -1,17 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {ExtJSClass} from '../extangular/extjs.class';
 
-
-
-
-
-export class WidgetStore extends ExtJSClass implements OnInit  {
-  ngOnInit() {
-		console.log('OnInit');
-  }
+export class WidgetStore extends ExtJSClass {
 
 	constructor (createConfig: any) {
-		console.log('constructor');
 		let className: any = 'WidgetStore';
 		let extend: any = 'Ext.data.ArrayStore';
 
@@ -19,30 +11,17 @@ export class WidgetStore extends ExtJSClass implements OnInit  {
 			fields: [
 				{name: 'name'},
 				{name: 'progress', type: 'float'},
-				'sequence1',
-				'sequence2',
-				'sequence3',
-				'sequence4',
-				'sequence5',
-				'sequence6',
-				'sequence7'
+				's1','s2','s3','s4','s5','s6','s7'
 			],
 
 			data: (function() {
 					var result = [],
 							i;
-					var j,s = [];for (j = 0; j < 20; j++) { s.push(Ext.Number.randomInt(-10, 10)); }
 					for (i = 0; i < 8; i++) {
-							result.push([i + 1, 'Record ' + (i + 1), Ext.Number.randomInt(0, 100) / 100, 
-							s, s, s, s, s, s, s
-							// generateSequence(), 
-							// generateSequence(), 
-							// generateSequence(), 
-							// generateSequence(20, 1, 10), 
-							// generateSequence(4, 10, 20), 
-							// generateSequence(), 
-							// generateSequence(20, -1, 1)
-							]);
+						var j,s = [];for (j = 0; j < 20; j++) { s.push(Ext.Number.randomInt(-10, 10)); }
+						result.push([i + 1, 'Record ' + (i + 1), Ext.Number.randomInt(0, 100) / 100, 
+						s, s, s, s, s, s, s
+						]);
 					}
 					return result;
 			})()
@@ -50,8 +29,4 @@ export class WidgetStore extends ExtJSClass implements OnInit  {
 		super(className, extend, defineConfig, createConfig);
 		return;
 	}
-
-
-
 }
-

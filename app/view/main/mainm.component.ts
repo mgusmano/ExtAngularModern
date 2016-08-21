@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CompanyStore } from '../../store/company.store';
 
 @Component({
   selector: 'my-appM',

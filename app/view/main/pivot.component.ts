@@ -2,16 +2,33 @@ import { Component } from '@angular/core';
 import { SalesStore } from '../../store/sales.store';
 
 @Component({
+		// <extjs [xtype]='"pivotgrid"'
+		// 	[config]='pivotgridConfig'
+		// ></extjs>
+
 	template: `
-		<extjs [xtype]='"pivotgrid"'
+		<extjs-pivotgrid
 			[config]='pivotgridConfig'
-		></extjs>
+			(ready)='readyPivotGrid($event)'
+			(select)='selectPivotGrid($event)'
+		></extjs-pivotgrid>
 	`
 })
 export class PivotComponent {
 	private border:any = 20;
 	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 	private pivotgridConfig:any;
+	private thePivotGrid; any;
+
+	readyPivotGrid(o) {
+		console.log(o);
+		//this.thePivotGrid = thePivotGrid;
+	}
+
+	selectPivotGrid(o) {
+		console.log(o);
+	}
+
 	constructor() {
 
 		this.pivotgridConfig = { 

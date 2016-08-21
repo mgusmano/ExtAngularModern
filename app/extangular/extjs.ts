@@ -2,37 +2,48 @@
 import { 
 	Component, 
 	Input, 
-	Output, 
+	//Output, 
 	OnInit, 
 	Attribute, 
 	ElementRef, 
 	EventEmitter } from '@angular/core';
+import { ComponentUtil } from './componentUtil';
 
 @Component({
   selector: 'extjs',
 	inputs: [ 'xtype', 'config'],
-	outputs: [ 'ready' ], //'click', 'selectionchange'],
+	outputs: ComponentUtil.EVENTS,
+
+	//outputs: [ 'ready', 'select' ], //'click', 'selectionchange'],
 	template: ``
 })
 export class ExtJS {
-	private xtype: string;
-	private config: any = {};
+	//@Input() private xtype: string;
+	//private config: any = {};
+	//@Input() private config: any = {};
 	
 	//private click: EventEmitter<any> = new EventEmitter();
 	//private selectionchange: EventEmitter<any> = new EventEmitter();
 
 	public extjsObject: any;
 	private rootElement: any;
-	private fit: boolean = false;
+	//private fit: boolean = false;
 
-	constructor(myElement: ElementRef, @Attribute('fit') fit: any) {
+	constructor(myElement: ElementRef) {
+//		debugger;
 	//constructor(myElement: ElementRef, fit: any) {
-		this['ready'] = new EventEmitter();
-		if (fit === null) {
-			this.fit = false;
-		} else {
-			this.fit = true;
-		}
+		//this['ready'] = new EventEmitter();
+		//this['select'] = new EventEmitter();
+		ComponentUtil.EVENTS.forEach( (eventName) => {
+				(<any>this)[eventName] = new EventEmitter();
+		});
+
+
+		// if (fit === null) {
+		// 	this.fit = false;
+		// } else {
+		// 	this.fit = true;
+		// }
 		//console.log(this.fit);
 		this.rootElement = myElement.nativeElement;
 	}
@@ -43,8 +54,11 @@ export class ExtJS {
 			let o: any = {
 				xtype: me.xtype,
 				renderTo: me.rootElement,
+			};
 
-				text: me.text,
+
+
+				//text: me.text,
 				// listeners: {
 				// 	scope: me,
 				// 	selectionchange: function(tree, node) {
@@ -67,7 +81,7 @@ export class ExtJS {
 				// 		// })
 				// 	}
 				// }
-			};
+
 			// o.on('click', function(o, e, eOpts) {
 			// 			me.click.next();
 			// });
@@ -80,7 +94,7 @@ export class ExtJS {
 			//	o.height = 300; 
 			//};
 			//if (me.listeners !== [] ) {o.listeners = me.listeners; };
-			if (me.plugins !== [] ) {o.plugins = me.plugins; };
+			//if (me.plugins !== [] ) {o.plugins = me.plugins; };
 			// if (me.fit === true ) {
 			// 	if (o.plugins != undefined) {
 			// 		o.plugins.push({ ptype: 'fittoparent' });
@@ -94,6 +108,15 @@ export class ExtJS {
 			if (me.config !== {} ) {
 				Ext.apply(o, me.config);
 			};
+			// o.listeners = {
+			// 	'select': me.select.next()
+			// };
+			o.listeners = {};
+
+			o.listeners['select'] = function(list, record, eOpts) {
+						me.select.next({list: list, record: record, eOpts: eOpts});
+			};
+
 			//debugger;
 			// o.listeners('click') = function(o, e, eOpts) {
 			// 			me.click.next();

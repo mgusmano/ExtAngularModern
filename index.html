@@ -1,74 +1,64 @@
 <!DOCTYPE HTML>
 <html manifest="">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
 
 	<base href="/">
 	<link rel="icon" type="image/png" href="favicon.ico">
 	<link rel="stylesheet" href="styles.css"/>
 
-<script>
-
-function generateSequence(count, min, max) {
-	var j,
-			sequence = [];
-	if (count == null) {
-			count = 20;
-	}
-	if (min == null) {
-			min = -10;
-	}
-	if (max == null) {
-			max = 10;
-	}
-	for (j = 0; j < count; j++) {
-			sequence.push(Ext.Number.randomInt(min, max));
-	}
-	return sequence;
-};
-
-function generateSequence(count, min, max) {
-	var j,sequence = [];
-	if (count == null) { count = 20; }
-	if (min == null) { min = -10; }
-	if (max == null) { max = 10;}
-	for (j = 0; j < count; j++) {
-			sequence.push(Ext.Number.randomInt(min, max));
-	}
-	return sequence;
-};
-
-function generateSequence(count, min, max) {
-	var j,s = [];for (j = 0; j < 20; j++) { s.push(Ext.Number.randomInt(-10, 10)); }return s;
-};
-
-</script>
-
 	<!--
 	<script src="app/extangular/fittoparent.js"></script>
-	<link rel="stylesheet" href="ext-6.2.0.866/build/modern/theme-triton/resources/theme-triton-all.css"/>
+	<link rel="stylesheet" href="ext-6.2.0.940/build/modern/theme-triton/resources/theme-triton-all.css"/>
 
-	<script src="ext-6.2.0.866/build/modern/theme-material/theme-material.js"></script>
-	<link rel="stylesheet" href="ext-6.2.0.866/build/modern/theme-material/resources/theme-material-all.css"/>
+	<script src="ext-6.2.0.940/build/modern/theme-material/theme-material.js"></script>
+	<link rel="stylesheet" href="ext-6.2.0.940/build/modern/theme-material/resources/theme-material-all.css"/>
+	<link rel="stylesheet" href="resources/mod-all.css"/>
 -->
 	<link rel="stylesheet" href="resources/mod-all.css"/>
 
-	<script src="ext-6.2.0.866/build/ext-modern-all-debug.js"></script>
-	<script src="ext-6.2.0.866/build/packages/charts/modern/charts.js"></script>
-	<script src="ext-6.2.0.866/packages/pivot/build/modern/pivot-debug.js"></script>
+	<link rel="stylesheet" href="ext-6.2.0.940/packages/calendar/build/modern/modern-neptune/resources/calendar-all.css"/>
+	
+    <script type="text/javascript">
+    </script>
 
 <!--
-	<script src="ext-6.2.0.866/packages/exporter/build/${toolkit.name}/exporter.js"></script>
+	<script src="Boot.js"></script>
+	<script src="appProd.js"></script>
 
-	<script src="ext-6.2.0.866/packages/calendar/build/modern/calendar.js"></script>
-	<script src="ext-6.2.0.866/build/packages/d3/modern/d3-debug.js"></script>
+	<script src="Boot.js"></script>
+	<script src="app.js"></script>
 -->
 
+<!--
+	<script src="ext-6.2.0.940/build/ext-modern-all-debug.js"></script>
+	<script src="dist/js/allmjg.min.js"></script>
+-->
+<script src="cmdBuild/Boot.js"></script>
+<script src="ext-6.2.0.940/modern/modern/overrides/init.js"></script>
+
+<script src="cmdBuild/appTest.js"></script>
 
 
 
+<script src="ext-6.2.0.940/packages/d3/d3.js"></script>
+
+
+<!--
+
+	<script src="ext-6.2.0.940/build/packages/charts/modern/charts-debug.js"></script>
+	<script src="ext-6.2.0.940/packages/pivot/build/modern/pivot.js"></script>
+	<script src="ext-6.2.0.940/build/packages/d3/modern/d3.js"></script>
+	<script src="ext-6.2.0.940/packages/calendar/build/modern/calendar.js"></script>
+
+
+	<script src="d3/modern/d3-debug.js"></script>
+	<script src="ext-6.2.0.866/build/packages/d3/modern/d3-debug.js"></script>
+	<script src="ext-6.2.0.866/packages/exporter/build/${toolkit.name}/exporter.js"></script>
+	<script src="ext-6.2.0.866/packages/calendar/build/modern/calendar.js"></script>
+-->
 
 	<script src="node_modules/core-js/client/shim.min.js"></script>
 	<script src="node_modules/zone.js/dist/zone.js"></script>

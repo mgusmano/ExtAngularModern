@@ -32,23 +32,23 @@ export class ChartComponent implements OnInit {
 					type: 'sprite',
 					position: 'bottom'
 			},
-			innerPadding: '0 3 0 3',
-			insetPadding: '30 10 10 10',
-			interactions: [
-				{
-					type: 'panzoom',
-					axes: {
-							left: {
-									allowPan: false,
-									allowZoom: false
-							},
-							bottom: {
-									allowPan: true,
-									allowZoom: true
-							}
-					}
-				}
-			],
+			// innerPadding: '0 3 0 3',
+			// insetPadding: '30 10 10 10',
+			// interactions: [
+			// 	{
+			// 		type: 'panzoom',
+			// 		axes: {
+			// 				left: {
+			// 						allowPan: false,
+			// 						allowZoom: false
+			// 				},
+			// 				bottom: {
+			// 						allowPan: true,
+			// 						allowZoom: true
+			// 				}
+			// 		}
+			// 	}
+			// ],
 			series: [
 				{
 					type: 'bar',
@@ -56,10 +56,7 @@ export class ChartComponent implements OnInit {
 					yField: ['data1', 'data2', 'data3', 'data4', 'data5', 'data6'],
 					title: ['Apples', 'Oranges', 'Bananas', 'Plums', 'Mangos', 'Pears'],
 					stacked: false,
-					style: {
-							lineWidth: 2,
-							//maxBarWidth: 50
-					}
+					style: { lineWidth: 2 }
 				}
 			],
 			axes: [
@@ -77,7 +74,7 @@ export class ChartComponent implements OnInit {
 					type: 'category',
 					position: 'bottom',
 					fields: 'name',
-					visibleRange: [0, 0.2]
+					//visibleRange: [0, 0.2]
 				}
 			]
 		};
