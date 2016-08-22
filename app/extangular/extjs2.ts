@@ -1,10 +1,10 @@
 import { Component, OnInit, Attribute, ElementRef, EventEmitter } from '@angular/core';
-import { ComponentUtil } from './componentUtil';
+//import { ComponentUtil } from './componentUtil';
 
 @Component({
   selector: 'extjs2',
 	inputs: [ 'config'],
-	outputs: ComponentUtil.EVENTS,
+	//outputs: ComponentUtil.EVENTS,
 	template: ``
 })
 export class ExtJS2 {
@@ -15,9 +15,9 @@ export class ExtJS2 {
 	constructor(myElement: ElementRef, @Attribute('xtype') xtype:string) {
 		console.log(xtype);
 		this.xtype = xtype;
-		ComponentUtil.EVENTS.forEach( (eventName) => {
-				(<any>this)[eventName] = new EventEmitter();
-		});
+		// ComponentUtil.EVENTS.forEach( (eventName) => {
+		// 		(<any>this)[eventName] = new EventEmitter();
+		// });
 		this.rootElement = myElement.nativeElement;
 	}
 

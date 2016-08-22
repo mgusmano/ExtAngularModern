@@ -6,15 +6,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ExtJS } from './extangular/extjs';
 import { ExtJS2 } from './extangular/extjs2';
+import { ExtJSViewPortControl } from './extangular/extjs.viewport.control';
 import { ExtJSListControl } from './extangular/extjs.list.control';
+import { ExtJSDataViewControl } from './extangular/extjs.dataview.control';
 import { ExtJSGridControl } from './extangular/extjs.grid.control';
 import { ExtJSPivotGridControl } from './extangular/extjs.pivotgrid.control';
 import { ExtJSCartesianControl } from './extangular/extjs.cartesian.control';
 
 import { MainMComponent } from './view/main/mainm.component';
+import { ViewPortComponent } from './view/main/viewport.component';
 import { NavigationComponent } from './view/main/navigation.component';
 
 import { ListComponent } from './view/main/list.component';
+import { DataViewComponent } from './view/main/dataview.component';
+import { AgencyGridComponent } from './view/main/agencygrid.component';
 import { GridComponent } from './view/main/grid.component';
 import { WidgetGridComponent } from './view/main/widgetgrid.component';
 import { ChartComponent } from './view/main/chart.component';
@@ -28,8 +33,10 @@ import { BasicComponent } from './view/main/basic.component';
 
 //const appRoutes: Routes = [
 const appRoutes: any = [
-	{ text: '', path: '', redirectTo: '/list', pathMatch: 'full' },
-	{ text: 'List', path: 'list', component: ListComponent },
+	{ text: '', path: '', redirectTo: '/dataview', pathMatch: 'full' },
+	{ text: 'Agency View', path: 'dataview', component: DataViewComponent },
+	{ text: 'Agency List', path: 'list', component: ListComponent },
+	{ text: 'Agency Grid', path: 'agencygrid', component: AgencyGridComponent },
 	{ text: 'Grid', path: 'grid', component: GridComponent },
 	{ text: 'Widget Grid', path: 'widgetgrid', component: WidgetGridComponent },
 	{ text: 'Chart', path: 'chart', component: ChartComponent },
@@ -46,12 +53,13 @@ export const routing = RouterModule.forRoot(appRoutes);
 @NgModule({
 	imports: [ BrowserModule, routing ], 
 	declarations: [ 
-		MainMComponent, NavigationComponent, 
-		ListComponent, GridComponent, WidgetGridComponent,
+		MainMComponent, NavigationComponent, ViewPortComponent,
+		ListComponent, DataViewComponent, AgencyGridComponent, GridComponent, WidgetGridComponent,
 		ChartComponent, PieComponent,
 		PivotComponent, AnalyzeComponent, CalendarComponent, CarouselComponent, D3TreeListComponent,
 		BasicComponent, 
-		ExtJS, ExtJS2, ExtJSListControl, ExtJSGridControl, ExtJSPivotGridControl, ExtJSCartesianControl,
+		ExtJS, ExtJS2, 
+		ExtJSViewPortControl, ExtJSListControl, ExtJSDataViewControl, ExtJSGridControl, ExtJSPivotGridControl, ExtJSCartesianControl,
 	],
   bootstrap: [ MainMComponent ]
 })

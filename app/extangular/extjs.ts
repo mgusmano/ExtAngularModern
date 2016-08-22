@@ -7,14 +7,14 @@ import {
 	Attribute, 
 	ElementRef, 
 	EventEmitter } from '@angular/core';
-import { ComponentUtil } from './componentUtil';
+//import { ComponentUtil } from './componentUtil';
 
 @Component({
   selector: 'extjs',
 	inputs: [ 'xtype', 'config'],
-	outputs: ComponentUtil.EVENTS,
+	//outputs: ComponentUtil.EVENTS,
 
-	//outputs: [ 'ready', 'select' ], //'click', 'selectionchange'],
+	outputs: [ 'ready', 'select' ], //'click', 'selectionchange'],
 	template: ``
 })
 export class ExtJS {
@@ -32,11 +32,15 @@ export class ExtJS {
 	constructor(myElement: ElementRef) {
 //		debugger;
 	//constructor(myElement: ElementRef, fit: any) {
-		//this['ready'] = new EventEmitter();
-		//this['select'] = new EventEmitter();
-		ComponentUtil.EVENTS.forEach( (eventName) => {
-				(<any>this)[eventName] = new EventEmitter();
-		});
+		this['ready'] = new EventEmitter();
+		this['select'] = new EventEmitter();
+
+
+
+
+		// ComponentUtil.EVENTS.forEach( (eventName) => {
+		// 		(<any>this)[eventName] = new EventEmitter();
+		// });
 
 
 		// if (fit === null) {

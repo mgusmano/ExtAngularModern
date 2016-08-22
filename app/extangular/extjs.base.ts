@@ -47,26 +47,14 @@ export abstract class ExtJSBase {
 				renderTo: me.rootElement
 			};
 			o.listeners = me.listeners;
-			//console.log('inputs: ' + me.inputs);
 			if (me.inputs != undefined) {
 				for (var i = 0; i < me.inputs.length; i++) { 
 					var s = me.inputs[i];
 					if (me[s] != undefined ) { 
-						console.log(s);
 						o[s] = me[s]; 
 					};
 				}
-
-				//console.log(me[me.inputs[0]])
-				//var s = me.inputs[0];
-				//if (me[s] != undefined ) { o[s] = me[s]; };
-
 			}
-			//if (me.title !== {} ) {o.title = me.title; };
-			//if (me.topAxis !== {} ) {o.topAxis = me.topAxis; };
-			//if (me.leftAxis !== {} ) {o.leftAxis = me.leftAxis; };
-			//if (me.aggregate !== {} ) {o.aggregate = me.aggregate; };
-			//o.store = me.store;
 			if (me.config !== {} ) {
 				Ext.apply(o, me.config);
 			};

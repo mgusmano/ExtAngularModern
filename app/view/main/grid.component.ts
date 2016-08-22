@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CompanyStore } from '../../store/company.store';
 import { SalesStore } from '../../store/sales.store';
 
 @Component({
@@ -38,9 +37,6 @@ export class GridComponent {
 			left: this.border, top: this.border,
 			style: { width: this.size, height: this.size },
 			shadow: true, 
-			//controller: 'grid-bigdata',
-			//grouped: true,
-			//rowLines: true,
 			store: new SalesStore({}).extjsObject,
 			columns: [
 				{ text: 'salesperson',width:200,	dataIndex: 'salesperson' },
@@ -59,12 +55,6 @@ export class GridComponent {
 				{ type: 'rowexpander' },
 			// { type: 'gridexporter'}
 			],
-
-			// listeners: {
-			// 		documentsave: 'onDocumentSave',
-			// 		beforedocumentsave: 'onBeforeDocumentSave'
-			// },
-
 			items: [{
 					docked: 'top',
 					xtype: 'toolbar',
@@ -72,7 +62,6 @@ export class GridComponent {
 					items: [{
 							xtype: 'button',
 							text: 'Export to ...',
-							//scope: this,
 							handler: this.exportTo
 					}]
 			}]

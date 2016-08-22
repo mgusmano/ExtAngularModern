@@ -4,6 +4,10 @@ import { ExtJSBase } from './extjs.base';
 export class ExtJSPivotGridEvents {
 	public static XTYPE: string = 'pivotgrid';
 	public static INPUTS = [
+		'leftAxis',
+		'topAxis',
+		'aggregate',
+		'store',
 		'title',
 		'matrix'
 	];

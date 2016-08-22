@@ -15,6 +15,5 @@ export class ExtJSClass {
 		this.defineConfig = defineConfig;
 		this.createConfig = createConfig;
 		this.extjsObject = Ext.create(className, createConfig);
-		//return this.extjsObject;
 	}
 }
