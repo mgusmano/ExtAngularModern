@@ -1006,12 +1006,14 @@ textarea {
     pointer-events: all;
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-base/sass/src/layout/Abstract.scss:1 */
+/*
 html,
 body {
     position: relative;
     width: 100%;
     height: 100%;
 }
+mjg */
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-base/sass/src/layout/Abstract.scss:8 */
 .x-fullscreen {
     position: absolute !important;
@@ -1050,6 +1052,8 @@ body {
     right: 0;
     pointer-events: none;
     overflow: visible;
+		z-index: 4000;
+		display: block; /* mjg */
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-base/sass/src/layout/Abstract.scss:44 */
 .x-float-wrap > .x-floated {
@@ -6748,7 +6752,7 @@ html.x-big {
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-neptune/sass/var/grid/cell/Base.scss:110 */
 .x-gridcell {
-    font: 400 1.16667rem/1.28572em Roboto, sans-serif;
+    font: 400 0.86rem/1.28572em Roboto, sans-serif; /* mjg */
     padding: 0.5em 1.14286em;
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-neptune/sass/var/grid/cell/Base.scss:115 */
@@ -6796,7 +6800,8 @@ html.x-big {
     border-bottom-style: solid;
     border-color: rgba(17, 17, 17, 0.12);
     border-color: var(--divider-color);
-    font: 400 1.16667rem/1em Roboto, sans-serif;
+    /* font: 400 1.16667rem/1em Roboto, sans-serif; mjg */
+    font: 400 0.86rem/1em Roboto, sans-serif;
     padding: 0.57143em 1.14286em;
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-neptune/sass/var/grid/column/Column.scss:285 */

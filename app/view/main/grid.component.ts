@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SalesStore } from '../../store/sales.store';
+import { AgencyService }  from '../../service/agency.service';
+//import { AgencyPortfolioStore } from '../../store/agencyportfolio.store';
 
 @Component({
   selector: '',
@@ -13,8 +14,6 @@ import { SalesStore } from '../../store/sales.store';
 	`
 })
 export class GridComponent { 
-	private border:any = 20;
-	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 	private gridConfig:any;
 
 	selectGrid(o) {
@@ -29,24 +28,15 @@ export class GridComponent {
 	}
 
 	readyGrid(theGrid) {
-		//console.log(theGrid);
+		//console.log(theGrid.extjsObject);
 	}
 
-	constructor() {
+	constructor(private agencyService: AgencyService) {
 		this.gridConfig = { 
-			left: this.border, top: this.border,
-			style: { width: this.size, height: this.size },
-			shadow: true, 
-			store: new SalesStore({}).extjsObject,
-			columns: [
-				{ text: 'salesperson',width:200,	dataIndex: 'salesperson' },
-        { text: 'Amount', dataIndex: 'amount' },
-        { text: 'Country', width: 125, dataIndex: 'country'},
-        { text: 'Orderdate', width: 300, dataIndex: 'orderdate' },
-        { text: 'Person - range', width: 150, dataIndex: 'person-range' },
-        { text: 'Year', flex: 1, dataIndex: 'year' }
-			],
-			 plugins: [
+			style: { width: '100%', height: '100%' },
+//			store: new AgencyPortfolioStore().extjsObject,
+			store: agencyService.getAgencyPortfolioStore(),
+			plugins: [
 				{ type: 'grideditable' }, 
 				{ type: 'gridviewoptions' }, 
 				{ type: 'pagingtoolbar' }, 
@@ -55,16 +45,42 @@ export class GridComponent {
 				{ type: 'rowexpander' },
 			// { type: 'gridexporter'}
 			],
-			items: [{
-					docked: 'top',
-					xtype: 'toolbar',
-					shadow: false,
-					items: [{
-							xtype: 'button',
-							text: 'Export to ...',
-							handler: this.exportTo
-					}]
-			}]
+			columns: [
+				//{ dataIndex: 'agency', text: 'agency', width: 300 },
+				{ dataIndex: 'agencyCode', text: 'agencyCode', width: 300 },
+				{ dataIndex: 'agencyName', text: 'agencyName', type: 'string', width: 300 },
+				{ dataIndex: 'uniqueInvestmentIdentifier', text: 'uniqueInvestmentIdentifier', type: 'string', width: 300 },
+				//{ dataIndex: 'investmentCategory', text: 'investmentCategory', type: 'string', width: 300 },
+				//{ dataIndex: 'lobTitle', text: 'lobTitle', type: 'string', width: 300 },
+				{ dataIndex: 'bureauCode', text: 'bureauCode', type: 'string', width: 300 },
+				{ dataIndex: 'bureauName', text: 'bureauName', type: 'string', width: 300 },
+				{ dataIndex: 'partOfITPortfolio', text: 'partOfITPortfolio', type: 'string', width: 300 },
+				//{ dataIndex: 'missionDeliveryAndManagementSupportArea', text: 'missionDeliveryAndManagementSupportArea', type: 'string', width: 300 },
+				{ dataIndex: 'typeOfInvestment', text: 'typeOfInvestment', type: 'string', width: 300 },
+				{ dataIndex: 'lineItemDescriptor', text: 'lineItemDescriptor', type: 'string', width: 300 },
+				{ dataIndex: 'investmentTitle', text: 'investmentTitle', type: 'string', width: 300 },
+				{ dataIndex: 'investmentDescription', text: 'investmentDescription', width: 300 },
+				{ dataIndex: 'feaBRMservicesPrimaryServiceArea', text: 'feaBRMservicesPrimaryServiceArea', type: 'string', width: 300 },
+//				{ dataIndex: 'totalITspendingCY', text: 'totalITspendingCY', type: 'number', width: 300 },
+				{ dataIndex: 'totalITspendingCYB',text: 'totalITspendingCYB', width: 200, 
+					align: 'right', renderer: function(v) {return Ext.util.Format.currency(v,'$',2)} }, 
+				//{ dataIndex: 'DME_CY_AgencyFunding', text: 'DME_CY_AgencyFunding', type: 'number', width: 300 },
+				{ dataIndex: 'DME_CYB_AgencyFunding', text: 'DME_CYB_AgencyFunding', width: 200,
+					align: 'right', renderer: function(v) {return Ext.util.Format.currency(v,'$',2)} }, 
+				//{ dataIndex: 'DME_CY_Contributions', text: 'DME_CY_Contributions', type: 'number', width: 300 },
+				{ dataIndex: 'OM_CY_AgencyFunding', text: 'OM_CY_AgencyFunding', type: 'number', width: 300 },
+				//{ dataIndex: 'OM_CY_Contributions', text: 'OM_CY_Contributions', type: 'number', width: 300 },
+				//{ dataIndex: 'numberOfGovFTEsCY', text: 'numberOfGovFTEsCY', type: 'number', width: 300 },
+				//{ dataIndex: 'percentageCostForGovFTECY', text: 'percentageCostForGovFTECY', type: 'number', width: 300 },
+				//{ dataIndex: 'cloudComputingAlternativesEvaluation', text: 'cloudComputingAlternativesEvaluation', type: 'string', width: 300 },
+				//{ dataIndex: 'providesCloudToAgencyComponents', text: 'providesCloudToAgencyComponents', type: 'number', width: 300 },
+				//{ dataIndex: 'providesCloudToOtherFedStateLocal', text: 'providesCloudToOtherFedStateLocal', type: 'number', width: 300 },
+				{ dataIndex: 'Provisioned_DME_CY_AgencyFunding', text: 'Provisioned_DME_CY_AgencyFunding', type: 'number', width: 300 },
+				//{ dataIndex: 'Provisioned_DME_CY_Contributions', text: 'Provisioned_DME_CY_Contributions', type: 'number', width: 300 },
+				{ dataIndex: 'Provisioned_OM_CY_AgencyFunding', text: 'Provisioned_OM_CY_AgencyFunding', type: 'number', width: 300 },
+				//{ dataIndex: 'Provisioned_OM_CY_Contributions', text: 'Provisioned_OM_CY_Contributions', type: 'number', width: 300 },
+				//{ dataIndex: 'derivedStatus', text: 'derivedStatus', type: 'string', width: 300 }
+			]
 		};
 	}
 

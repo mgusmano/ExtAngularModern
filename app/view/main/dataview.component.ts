@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AgencyStore } from '../../store/agency.store';
+import { AgencyService }  from '../../service/agency.service';
 
 @Component({
 	styles: [`
 	`],
   selector: '',
 	template: `
+		<div style="padding:10px;background:#f1f5f6;">
 		<extjs-dataview
 			[config]='dataviewConfig' 
 			(ready)="readyDataView($event)"
@@ -13,16 +15,23 @@ import { AgencyStore } from '../../store/agency.store';
 			(itemmouseenter)="itemmouseenterDataView($event)"
 			(itemmouseleave)="itemmouseleaveDataView($event)"
 		></extjs-dataview>
-	`
+		</div>
+	`,
+	changeDetection: ChangeDetectionStrategy.Default
 })
 export class DataViewComponent { 
-	private border:any = 20;
-	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
+	//private border:any = 20;
+	//private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
+
+	constructor(private agencyService: AgencyService) {
+	}
 
 	dataviewConfig: any = { 
-		left: this.border, top: this.border,
-		style: { width: this.size, height: this.size, background: 'lightgray' },
-		shadow: true,
+		//left: this.border, top: this.border,
+		//style: { width: this.size, height: this.size, background: 'lightgray' },
+		//shadow: true,
+		style: { width: '80%', height: '100%', background: '#f1f5f6' },
+//		style: { background: 'lightgray' },
 		
 		scrollable: 'vertical',
 		inline: true,
@@ -41,10 +50,13 @@ export class DataViewComponent {
 
 	itemmouseenterDataView(o) {
 		console.log(o.record);
+		this.agencyService.announceAgency(o.record.data);
+		//this.agencyService.setAgency(o.record.data.agencyAbbreviation);
 	}
 
 	itemmouseleaveDataView(o) {
 		console.log(o.record);
+		//console.log(this.agencyService.getAgency())
 	}
 
 	selectDataView(o) {

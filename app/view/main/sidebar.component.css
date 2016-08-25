@@ -1,0 +1,116 @@
+/* profile */
+
+.profile_pic {
+    width: 35%;
+    float: left;
+}
+
+.logo_img {
+    height: 40px;
+		padding-left:10px;
+		padding-top: 5px;
+}
+
+.img-circle.profile_img {
+    width: 70%;
+    background: #fff;
+    z-index: 1000;
+    position: inherit;
+    margin-top: 5px;
+		margin-left: 25px;
+		margin-bottom: 15px;
+    border: 1px solid rgba(52,73,94,0.44);
+    padding: 4px;
+}
+.img-circle {
+    border-radius: 50%;
+}
+img {
+    vertical-align: middle;
+}
+
+.profile_info {
+    padding: 15px 10px 15px;
+    width: 65%;
+    float: left;
+}
+
+.profile_info span {
+    font-size: 13px;
+    line-height: 30px;
+    color: #BAB8B8;
+}
+
+.profile_info h2 {
+    font-size: 14px;
+    color: #ECF0F1;
+    margin: 0;
+    font-weight: 300;
+}
+/* profile */
+
+
+.nav_title {
+	width: 225px;
+	float: left;
+	color: white;
+	border-radius: 0;
+}
+
+.site_title i {
+	border: 1px solid #EAEAEA;
+	color: white;
+	padding: 5px 6px;
+	border-radius: 50%;
+}
+
+.sidebar {
+	border-radius: 0;
+	position: fixed;
+	z-index: 3;
+	top: 0px;
+	left: 225px;
+	width: 225px;
+	margin-left: -225px;
+	border: none;
+	border-radius: 0;
+	overflow-y: auto;
+	background: -webkit-linear-gradient(top left, #000 0%, #3f729b 100%);
+	background: -o-linear-gradient(top left, #000 0%, #3f729b 100%);
+	background: linear-gradient(to bottom right, #000 0%, #3f729b 100%);
+	bottom: 0;
+	overflow-x: hidden;
+	padding-bottom: 40px;
+	transition: all 0.2s ease-in-out;
+}
+.sidebar-group { margin-left:0;margin-right:0;margin-top:0;margin-bottom:0; }
+.sidebar-group-item { position:relative; }
+.sidebar-child { margin-left:15px; }
+.sidebar-chevron { position:absolute;right:15px;top:8px; }
+
+ul a {
+	font-size: 12px;
+	margin: 1px 15px 1px 15px;
+	padding: 5px 15px 5px 15px;
+	width:175px;
+	text-decoration: none;
+	display: inline-block;
+	color: white;
+	border-top-right-radius: 0.25rem;
+	border-top-left-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+ul a:hover {
+	color: #FFFFFF;
+	background-color: #294a65; /* #3f729b; */
+}
+ul a.active {
+	color: #FFFFFF;
+	background-color: #294a65;
+}

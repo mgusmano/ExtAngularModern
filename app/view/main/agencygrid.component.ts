@@ -13,15 +13,10 @@ import { AgencyStore } from '../../store/agency.store';
 	`
 })
 export class AgencyGridComponent { 
-	private border:any = 20;
-	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)';
 
 	private gridConfig:any = { 
-		left: this.border, top: this.border,
-		style: { width: this.size, height: this.size },
-		shadow: true, 
-		
-		store: new AgencyStore({}).extjsObject,
+		style: { width: '100%', height: '100%' },
+		store: new AgencyStore().extjsObject,
 		columns: [
 			{ text: 'agencyCode', width:200, dataIndex: 'agencyCode' },
 			{ text: 'agencyAbbreviation', width: 200, dataIndex: 'agencyAbbreviation'},

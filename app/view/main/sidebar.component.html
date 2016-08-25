@@ -1,0 +1,99 @@
+<button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">
+    &#9776;
+</button>
+
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+
+<!--
+	<div class="xnavbar xnav_title" style="height:50px;">
+		<img src="extangular.png" alt="..." class="logo_img">	
+		<span style="font-size:18px;color: white;height:50px;text-align:center;">Sencha ExtAngular</span>
+	</div>
+-->
+	<!-- menu profile quick info -->
+	<div class="profile" style="margin-top:10px;">
+		<div class="profile_pic">
+			<img src="resources/obama.jpeg" alt="..." class="img-circle profile_img">
+			<!--
+			<img src="resources/trump.jpeg" alt="..." class="img-circle profile_img">
+			<img src="resources/hillary.jpeg" alt="..." class="img-circle profile_img">
+			-->
+		</div>
+		<div class="profile_info">
+			<span>Welcome,</span>
+			<h2>Barack Obama</h2>
+		</div>
+	</div>
+	<!-- /menu profile quick info -->
+
+	<br>
+
+	<!-- /menu footer buttons -->
+	<div class="sidebar-footer hidden-small">
+		<a data-toggle="tooltip" data-placement="top" title="Settings">
+			<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+		</a>
+		<a data-toggle="tooltip" data-placement="top" title="FullScreen">
+			<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+		</a>
+		<a data-toggle="tooltip" data-placement="top" title="Lock">
+			<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+		</a>
+		<a data-toggle="tooltip" data-placement="top" title="Logout">
+			<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+		</a>
+	</div>
+	<!-- /menu footer buttons -->
+
+	<ul class="sidebar-group">
+
+		<li><a class="sidebar-group-item" routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i> Dashboard</a>
+		<li><a class="sidebar-group-item" routerLink="/dataview" routerLinkActive="active"><i class="fa fa-database"></i> Agencies</a>
+		<li><a class="sidebar-group-item" routerLink="/grid" routerLinkActive="active"><i class="fa fa-cog"></i> Spending Detail</a>
+
+		<li><a (click)="toggle(0)" class="sidebar-group-item" ><i class="fa fa-database"></i> Reports<i class="sidebar-chevron fa fa-chevron-{{chevron[0]}}"></i></a>
+			<ul *ngIf="expanded[0]">
+				<li class="sidebar-child"><a routerLink="/asbtoi" routerLinkActive="active"> Agency Spending By Type Of Investment</a>
+				<li class="sidebar-child"><a routerLink="/asbitp" routerLinkActive="active"> Agency Spending By IT Portfolio</a>
+				<li class="sidebar-child"><a routerLink="/allsbtoi" routerLinkActive="active"> All Spending By Type Of Investment</a></li>
+				<li class="sidebar-child"><a routerLink="/allsbpsa" routerLinkActive="active"> All Spending By Primary Service Area</a></li>
+				<!--
+				<li class="sidebar-child"><a routerLink="/chart" routerLinkActive="active"> Agency Spending By Investment Category Bar Chart</a></li>
+				<li class="sidebar-child"><a routerLink="/pie" routerLinkActive="active"> Agency Spending By Bureau</a></li>
+				-->
+			</ul>
+		</li>
+
+		<li><a (click)="toggle(1)" class="sidebar-group-item" ><i class="fa fa-home"></i> Ad-hoc Analysis<i class="sidebar-chevron fa fa-chevron-{{chevron[1]}}"></i></a>
+			<ul *ngIf="expanded[1]">
+				<li class="sidebar-child"><a routerLink="/configurator" routerLinkActive="active"><i class="fa fa-cog"></i> Pivot Configurator </a></li>
+				<li class="sidebar-child"><a routerLink="/analyze" routerLinkActive="active"><i class="fa fa-cog"></i> Pivot with Chart </a></li>
+				<li class="sidebar-child"><a routerLink="/chart" routerLinkActive="active"><i class="fa fa-cog"></i> Pivot Heat Map </a></li>
+			</ul>
+		</li>
+
+		<li><a (click)="toggle(2)" class="sidebar-group-item" ><i class="fa fa-home"></i> Misc<i class="sidebar-chevron fa fa-chevron-{{chevron[2]}}"></i></a>
+			<ul *ngIf="expanded[2]">
+				<li class="sidebar-child"><a routerLink="/list" routerLinkActive="active"><i class="fa fa-list"></i> List</a></li>
+				<li class="sidebar-child"><a routerLink="/agencygrid" routerLinkActive="active"><i class="fa fa-list-alt"></i> Grid</a></li>
+				<li class="sidebar-child"><a routerLink="/widgetgrid" routerLinkActive="active"><i class="fa fa-cog"></i> Widget Grid</a>
+				<li class="sidebar-child"><a routerLink="/calendar" routerLinkActive="active"><i class="fa fa-calendar"></i> Calendar</a>
+				<li class="sidebar-child"><a routerLink="/carousel" routerLinkActive="active"><i class="fa fa-calendar"></i> Carousel</a>
+				<li class="sidebar-child"><a routerLink="/d3treelist" routerLinkActive="active"><i class="fa fa-calendar"></i> D3 TreeList</a>
+				<li class="sidebar-child"><a routerLink="/basic" routerLinkActive="active"><i class="fa fa-calendar"></i> Basic</a>
+			</ul>
+		</li>
+
+	</ul>
+
+<!--
+	<ul class="sidebar-group" >
+		<li *ngFor="let route of router.config">
+			<a *ngIf="route.redirectTo == null" class="sidebar-group-item" routerLink="/{{route.path}}" routerLinkActive="active"  >
+				<i class="fa fa-{{route.icon}}"></i> {{route.text}} <i *ngIf="route.icon == 'x'" style="position:absolute;right:15px;top:8px;" (click)="clickArrow(route.text)" class="fa fa-angle-down"></i>
+			</a>
+		</li>
+	</ul>
+-->
+
+</nav>
