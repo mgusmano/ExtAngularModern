@@ -36,7 +36,7 @@ export class MainMComponent {
 		router.events.subscribe(value => {
 			if (value instanceof NavigationEnd) {
    			//console.log('Current routes data: ', this.router.routerState.snapshot.url);
-				if (this.router.routerState.snapshot.url == '/dataview') {
+				if (this.router.routerState.snapshot.url == '/agencies') {
 						this.detail = 'center-detail'
 					} else {
 						this.detail = '';

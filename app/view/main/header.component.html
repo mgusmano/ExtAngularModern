@@ -1,9 +1,9 @@
-<nav class="navbar bg-inverse navbar-fixed-top topnav">
+<nav style="height:50px;" class="navbar bg-inverse navbar-fixed-top topnav">
 	<div class="collapse navbar-toggleable-xs clearfix text-center">
-		<!--
-		<a (click)="toggleSidebar()" class="navbar-brand" id="menu_toggle"><i class="fa fa-bars"></i></a>
-		-->
-		<a class="navbar-brand">The United States Federal Agency IT Dashboard (2016)</a>
-		<a (click)="toggleDetail()" style="float:right;" class="navbar-brand" id="menu_toggle"><i class="fa fa-bars"></i></a>
+		<a style="padding-left:15px;font-size:20px;" class="navbar-brand">The United States Federal Agency IT Dashboard (2016)</a>
+		<select style="float:right;margin-top:10px;margin-left:20px;" (change)="onSelect($event.target.value)" > 
+			<option *ngFor="let obj of objArray" [value]="obj.name">{{obj.name}}</option>
+		</select>
+		<span style="float:right;margin-top:10px;margin-left:15px;">Filter By:</span>
 	</div>
 </nav>

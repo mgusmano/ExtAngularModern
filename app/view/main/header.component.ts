@@ -1,22 +1,37 @@
 import { Component } from '@angular/core';
+import { AgencyService }  from '../../service/agency.service';
 
 @Component({
 	selector: 'header',
 	styleUrls: ['app/view/main/header.component.css'],
-	templateUrl: 'app/view/main/header.component.html',
+	templateUrl: 'app/view/main/header.component.html'
 })
 export class HeaderComponent { 
-	toggleSidebar() {
-		alert('hi');
+	private thePivotGrid; any;
+	private objArray:any = [
+		{name: 'All Agencies'}, 
+		{name: 'Department of Agriculture'}, 
+		{name: 'Department of Commerce'}, 
+		{name: 'Department of the Interior'}, 
+		{name: 'Department of Defense'},
+		{name: 'Department of Homeland Security'},
+	];
+
+	constructor(private agencyService: AgencyService) {}
+
+	readyPivotGrid(thePivotGrid) {
+		this.thePivotGrid = thePivotGrid;
 	}
 
-	toggleDetail() {
-		var c = $('#center');
-		if(!c.hasClass('center-detail')){
-			c.addClass('center-detail');
+	onSelect(value) {
+		if (value == 'All Agencies') {
+			this.agencyService.getAgencyPortfolioStore().filter('agencyName','');
+//			this.thePivotGrid.extjsObject.getStore().filter('agencyName','');
 		} else {
-			c.removeClass('center-detail');
+			this.agencyService.getAgencyPortfolioStore().filter('agencyName',value);
+//			this.thePivotGrid.extjsObject.getStore().filter('agencyName',value);
 		}
 	}
+
 
 }

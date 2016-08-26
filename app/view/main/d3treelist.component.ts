@@ -10,22 +10,16 @@ import { CompanyStore } from '../../store/company.store';
 	`
 })
 export class D3TreeListComponent { 
-	private border:any = 20;
+	private border:any = 0;
 	private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 	private d3Config: any = {};
 
 	constructor () {
 
 		this.d3Config = {
-			//left: 10, top: 10,
-			//style: { width: '300px', height: '300px' },
 			left: this.border, top: this.border,
 			style: { width: this.size, height: this.size },
-			shadow: true,
 
-			zoom: {
-				doubleTap: false
-			},
 			store: {
 				type: 'tree',
 				fields: [
@@ -56,49 +50,81 @@ export class D3TreeListComponent {
 				},
 				autoLoad: true
 			},
-			rootVisible: false,
-			selectEventName: null,
-			expandEventName: null,
-			nodeValue: function (node) {
-				return node.data.cap;
-			},
-			tooltip: {
-				cls: 'tip',
-				renderer: function (component, tooltip, node, element, event) {
-					//console.log(node);
-					//console.log(element);
-					var parentTpl:any = [
-							'<div class="tip-title">{data.name}</div>',
-							'<tpl for="childNodes">',
-							'<div><span class="tip-symbol">{data.name}</span><tpl if="data.description"> - {data.description}</tpl></div>',
-							'<tpl if="xindex &gt; 10">...{% break; %}</tpl>',
-							'</tpl>'
-					];
 
-					var leafTpl:any = [
-							'<div class="tip-company">{data.description}</div>',
-							'<div>Change:&nbsp;<tpl if="data.change &gt; 0">+</tpl>{data.change}%</div>'
-					];
-					// var view = this.getView(),
-					// 		tpl = view.lookupTpl(node.isLeaf() ? 'leafTpl' : 'parentTpl'),
-					// 		html;
-					var html:any;
-					//component.setSelection(node);
-					//html = parentTpl.apply(node);
-					//tooltip.setHtml(html);
-				}
+			// interactions: {
+			// 		type: 'panzoom',
+			// 		zoom: {
+			// 				doubleTap: false
+			// 		}
+			// },
+			// tooltip: {
+			// 		cls: 'tip',
+			// 		renderer: 'onTooltip'
+			// },
+			rootVisible: false,
+			nodeValue: function (node) {
+					return node.data.cap;
 			},
 			colorAxis: {
-				scale: {
-					type: 'linear',
-					domain: [-5, 0, 5],
-					range: ['#E45649', '#ECECEC', '#50A14F']
-				},
-				field: 'change',
-				processor: function (axis, scale, node, field) {
-					return node.isLeaf() ? scale(node.data[field]) : '#ececec';
-				}
+					scale: {
+							type: 'linear',
+							domain: [-5, 0, 5],
+							range: ['#E45649', '#ECECEC', '#50A14F']
+					},
+					field: 'change',
+					processor: function (axis, scale, node, field) {
+							return node.isLeaf() ? scale(node.data[field]) : '#ececec';
+					}
 			}
+
+
+
+			// zoom: {
+			// 	doubleTap: false
+			// },
+			// rootVisible: false,
+			// selectEventName: null,
+			// expandEventName: null,
+			// nodeValue: function (node) {
+			// 	return node.data.cap;
+			// },
+			// tooltip: {
+			// 	cls: 'tip',
+			// 	renderer: function (component, tooltip, node, element, event) {
+			// 		//console.log(node);
+			// 		//console.log(element);
+			// 		var parentTpl:any = [
+			// 				'<div class="tip-title">{data.name}</div>',
+			// 				'<tpl for="childNodes">',
+			// 				'<div><span class="tip-symbol">{data.name}</span><tpl if="data.description"> - {data.description}</tpl></div>',
+			// 				'<tpl if="xindex &gt; 10">...{% break; %}</tpl>',
+			// 				'</tpl>'
+			// 		];
+
+			// 		var leafTpl:any = [
+			// 				'<div class="tip-company">{data.description}</div>',
+			// 				'<div>Change:&nbsp;<tpl if="data.change &gt; 0">+</tpl>{data.change}%</div>'
+			// 		];
+			// 		// var view = this.getView(),
+			// 		// 		tpl = view.lookupTpl(node.isLeaf() ? 'leafTpl' : 'parentTpl'),
+			// 		// 		html;
+			// 		var html:any;
+			// 		//component.setSelection(node);
+			// 		//html = parentTpl.apply(node);
+			// 		//tooltip.setHtml(html);
+			// 	}
+			// },
+			// colorAxis: {
+			// 	scale: {
+			// 		type: 'linear',
+			// 		domain: [-5, 0, 5],
+			// 		range: ['#E45649', '#ECECEC', '#50A14F']
+			// 	},
+			// 	field: 'change',
+			// 	processor: function (axis, scale, node, field) {
+			// 		return node.isLeaf() ? scale(node.data[field]) : '#ececec';
+			// 	}
+			// }
 		}
 	}
 }

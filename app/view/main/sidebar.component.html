@@ -2,26 +2,17 @@
     &#9776;
 </button>
 
+
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
 
-<!--
-	<div class="xnavbar xnav_title" style="height:50px;">
-		<img src="extangular.png" alt="..." class="logo_img">	
-		<span style="font-size:18px;color: white;height:50px;text-align:center;">Sencha ExtAngular</span>
-	</div>
--->
 	<!-- menu profile quick info -->
 	<div class="profile" style="margin-top:10px;">
 		<div class="profile_pic">
-			<img src="resources/obama.jpeg" alt="..." class="img-circle profile_img">
-			<!--
-			<img src="resources/trump.jpeg" alt="..." class="img-circle profile_img">
-			<img src="resources/hillary.jpeg" alt="..." class="img-circle profile_img">
-			-->
+			<img src="resources/{{image}}.jpeg" alt="..." class="img-circle profile_img">
 		</div>
 		<div class="profile_info">
 			<span>Welcome,</span>
-			<h2>Barack Obama</h2>
+			<h2>{{name}}</h2>
 		</div>
 	</div>
 	<!-- /menu profile quick info -->
@@ -47,40 +38,66 @@
 
 	<ul class="sidebar-group">
 
-		<li><a class="sidebar-group-item" routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i> Dashboard</a>
-		<li><a class="sidebar-group-item" routerLink="/dataview" routerLinkActive="active"><i class="fa fa-database"></i> Agencies</a>
-		<li><a class="sidebar-group-item" routerLink="/grid" routerLinkActive="active"><i class="fa fa-cog"></i> Spending Detail</a>
 
-		<li><a (click)="toggle(0)" class="sidebar-group-item" ><i class="fa fa-database"></i> Reports<i class="sidebar-chevron fa fa-chevron-{{chevron[0]}}"></i></a>
+
+
+		<li><a class="sidebar-group-item" routerLink="/dashboard" routerLinkActive="active"><i class="sidebar-image fa fa-dashboard"></i> Dashboard</a>
+
+
+<li class="x-treelist-item x-treelist-item-leaf x-treelistitem x-treelist-item-with-icon" data-componentid="ext-treelistitem-4" id="ext-treelistitem-4" data-recordid="5">
+	<div class="x-treelist-row" id="ext-element-37">
+		<div class="x-treelist-item-wrap" id="ext-element-33" style="margin-left: 0px;">
+			<div class="x-treelist-item-icon x-fa fa-search" id="ext-element-35"></div>
+			<div class="x-treelist-item-text" id="ext-element-34">Search results</div>
+			<div class="x-treelist-item-expander"></div>
+		</div>
+	</div>
+</li>
+
+
+
+		<li><a class="sidebar-group-item" routerLink="/agencies" routerLinkActive="active"><i class="sidebar-image fa fa-institution"></i> Agencies</a>
+		<li><a class="sidebar-group-item" routerLink="/spendingdetail" routerLinkActive="active"><i class="sidebar-image fa fa-dollar"></i> Spending Detail</a>
+
+		<li><a (click)="toggle(0)" class="sidebar-group-item" ><i class="sidebar-image fa fa-bar-chart"></i> Spending Reports<i class="sidebar-chevron fa fa-caret-{{chevron[0]}}"></i></a>
 			<ul *ngIf="expanded[0]">
-				<li class="sidebar-child"><a routerLink="/asbtoi" routerLinkActive="active"> Agency Spending By Type Of Investment</a>
-				<li class="sidebar-child"><a routerLink="/asbitp" routerLinkActive="active"> Agency Spending By IT Portfolio</a>
-				<li class="sidebar-child"><a routerLink="/allsbtoi" routerLinkActive="active"> All Spending By Type Of Investment</a></li>
-				<li class="sidebar-child"><a routerLink="/allsbpsa" routerLinkActive="active"> All Spending By Primary Service Area</a></li>
+				<li class="sidebar-child"><a routerLink="/asbtoi" routerLinkActive="active"> By Type Of Investment</a>
+				<li class="sidebar-child"><a routerLink="/asbitp" routerLinkActive="active"> By IT Portfolio</a>
+				<li class="sidebar-child"><a routerLink="/allsbtoi" routerLinkActive="active"> All By Type Of Investment</a></li>
+				<li class="sidebar-child"><a routerLink="/allsbpsa" routerLinkActive="active"> All By Primary Service Area</a></li>
+				<li class="sidebar-child"><a routerLink="/asbb" routerLinkActive="active"> By Bureau</a></li>
 				<!--
 				<li class="sidebar-child"><a routerLink="/chart" routerLinkActive="active"> Agency Spending By Investment Category Bar Chart</a></li>
-				<li class="sidebar-child"><a routerLink="/pie" routerLinkActive="active"> Agency Spending By Bureau</a></li>
 				-->
 			</ul>
 		</li>
 
-		<li><a (click)="toggle(1)" class="sidebar-group-item" ><i class="fa fa-home"></i> Ad-hoc Analysis<i class="sidebar-chevron fa fa-chevron-{{chevron[1]}}"></i></a>
+		<li><a (click)="toggle(1)" class="sidebar-group-item" ><i class="sidebar-image fa fa-cogs"></i> Ad-hoc Analysis<i class="sidebar-chevron fa fa-caret-{{chevron[1]}}"></i></a>
 			<ul *ngIf="expanded[1]">
-				<li class="sidebar-child"><a routerLink="/configurator" routerLinkActive="active"><i class="fa fa-cog"></i> Pivot Configurator </a></li>
-				<li class="sidebar-child"><a routerLink="/analyze" routerLinkActive="active"><i class="fa fa-cog"></i> Pivot with Chart </a></li>
-				<li class="sidebar-child"><a routerLink="/chart" routerLinkActive="active"><i class="fa fa-cog"></i> Pivot Heat Map </a></li>
+				<li class="sidebar-child"><a routerLink="/configurator" routerLinkActive="active"> Pivot Configurator </a></li>
+				<li class="sidebar-child"><a routerLink="/analyze" routerLinkActive="active"> Pivot with Chart </a></li>
+				<li class="sidebar-child"><a routerLink="/chart" routerLinkActive="active"> Pivot Heat Map </a></li>
 			</ul>
 		</li>
 
-		<li><a (click)="toggle(2)" class="sidebar-group-item" ><i class="fa fa-home"></i> Misc<i class="sidebar-chevron fa fa-chevron-{{chevron[2]}}"></i></a>
+		<li><a (click)="toggle(2)" class="sidebar-group-item" ><i class="sidebar-image fa fa-star"></i> D3 Stuff<i class="sidebar-chevron fa fa-caret-{{chevron[2]}}"></i></a>
 			<ul *ngIf="expanded[2]">
+				<li class="sidebar-child"><a routerLink="/d3treelist" routerLinkActive="active"> D3 TreeList</a>
+				<li class="sidebar-child"><a routerLink="/pbd" routerLinkActive="active"> Purchases By Day</a>
+			</ul>
+		</li>
+
+		<li><a (click)="toggle(3)" class="sidebar-group-item" ><i class="sidebar-image fa fa-heart"></i> Misc<i class="sidebar-chevron fa fa-caret-{{chevron[3]}}"></i></a>
+			<ul *ngIf="expanded[3]">
+				<!--
+				<li class="sidebar-child"><a routerLink="/basic" routerLinkActive="active"><i class="fa fa-calendar"></i> Basic</a>
+				<li class="sidebar-child"><a routerLink="/pie" routerLinkActive="active"><i class="fa fa-list"></i> Pie</a></li>
 				<li class="sidebar-child"><a routerLink="/list" routerLinkActive="active"><i class="fa fa-list"></i> List</a></li>
 				<li class="sidebar-child"><a routerLink="/agencygrid" routerLinkActive="active"><i class="fa fa-list-alt"></i> Grid</a></li>
-				<li class="sidebar-child"><a routerLink="/widgetgrid" routerLinkActive="active"><i class="fa fa-cog"></i> Widget Grid</a>
-				<li class="sidebar-child"><a routerLink="/calendar" routerLinkActive="active"><i class="fa fa-calendar"></i> Calendar</a>
-				<li class="sidebar-child"><a routerLink="/carousel" routerLinkActive="active"><i class="fa fa-calendar"></i> Carousel</a>
-				<li class="sidebar-child"><a routerLink="/d3treelist" routerLinkActive="active"><i class="fa fa-calendar"></i> D3 TreeList</a>
-				<li class="sidebar-child"><a routerLink="/basic" routerLinkActive="active"><i class="fa fa-calendar"></i> Basic</a>
+				-->
+				<li class="sidebar-child"><a routerLink="/widgetgrid" routerLinkActive="active"> Widget Grid</a>
+				<li class="sidebar-child"><a routerLink="/calendar" routerLinkActive="active"> Calendar</a>
+				<li class="sidebar-child"><a routerLink="/carousel" routerLinkActive="active"> Carousel</a>
 			</ul>
 		</li>
 

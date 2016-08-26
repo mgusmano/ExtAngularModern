@@ -13,7 +13,7 @@ import { AgencyService }  from '../../service/agency.service';
 		></extjs-grid>
 	`
 })
-export class GridComponent { 
+export class SpendingDetailComponent { 
 	private gridConfig:any;
 
 	selectGrid(o) {

@@ -5,65 +5,61 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
-
-	<base href="/">
 	<link rel="icon" type="image/png" href="favicon.ico">
-	<link rel="stylesheet" href="resources/mod-all.css"/>
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600">
-	<!-- inject:css -->
+	<base href="/">
+
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css?1471971959533">
 	<link rel="stylesheet" href="css/main.css?1471971959534">
-	<!-- endinject -->
 	<link rel="stylesheet" href="styles.css"/>
 
-	<!--
-	<script src="app/extangular/fittoparent.js"></script>
-	<link rel="stylesheet" href="ext-6.2.0.940/build/modern/theme-triton/resources/theme-triton-all.css"/>
+	<script src="cmdBuild/Boot.js"></script>
+	<script src="ext-6.2.0.940/modern/modern/overrides/init.js"></script>
+	<script src="cmdBuild/appTest.js"></script>
+	<script src="ext-6.2.0.940/packages/d3/d3.js"></script>
 
-	<script src="ext-6.2.0.940/build/modern/theme-material/theme-material.js"></script>
-	<link rel="stylesheet" href="ext-6.2.0.940/build/modern/theme-material/resources/theme-material-all.css"/>
 	<link rel="stylesheet" href="resources/mod-all.css"/>
--->
+	<!--
 
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600">
 
 
 	<link rel="stylesheet" href="ext-6.2.0.940/packages/calendar/build/modern/modern-neptune/resources/calendar-all.css"/>
 
+	<script src="ext-6.2.0.940/build/modern/theme-triton/theme-triton.js"></script>
+	<link rel="stylesheet" href="ext-6.2.0.940/build/modern/theme-triton/resources/theme-triton-all.css"/>
+
+	<script src="ext-6.2.0.940/build/modern/theme-material/theme-material.js"></script>
+	<link rel="stylesheet" href="ext-6.2.0.940/build/modern/theme-material/resources/theme-material-all.css"/>
+
+	<script src="ext-6.2.0.940/build/modern/theme-material/theme-material.js"></script>
+	<link rel="stylesheet" href="resources/mod-all.css"/>
+
+-->
+
+
+
 <!--
+	<link rel="stylesheet" href="css/main.css?1471971959534">
+
+
+	<script src="app/extangular/fittoparent.js"></script>
+
 	<script src="Boot.js"></script>
 	<script src="appProd.js"></script>
 
 	<script src="Boot.js"></script>
 	<script src="app.js"></script>
--->
 
-<!--
 	<script src="ext-6.2.0.940/build/ext-modern-all-debug.js"></script>
 	<script src="dist/js/allmjg.min.js"></script>
+
 -->
 
-
-<script src="vendor/jquery.js"></script>
-<script src="src/sidemenu.js"></script>
-
-
-<script src="cmdBuild/Boot.js"></script>
-<script src="ext-6.2.0.940/modern/modern/overrides/init.js"></script>
-<script src="cmdBuild/appTest.js"></script>
-
-
-
-<script src="ext-6.2.0.940/packages/d3/d3.js"></script>
-
-
 <!--
-
 	<script src="ext-6.2.0.940/build/packages/charts/modern/charts-debug.js"></script>
 	<script src="ext-6.2.0.940/packages/pivot/build/modern/pivot.js"></script>
 	<script src="ext-6.2.0.940/build/packages/d3/modern/d3.js"></script>
 	<script src="ext-6.2.0.940/packages/calendar/build/modern/calendar.js"></script>
-
-
 	<script src="d3/modern/d3-debug.js"></script>
 	<script src="ext-6.2.0.866/build/packages/d3/modern/d3-debug.js"></script>
 	<script src="ext-6.2.0.866/packages/exporter/build/${toolkit.name}/exporter.js"></script>
@@ -79,7 +75,7 @@
 		System.import('appM').catch(function(err){ console.error('from index.html: ' + err); });
 	</script>
 </head>
-<body>
+<body style="overflow:hidden !important;">
 	<my-appM>Loading...</my-appM>
 </body>
 </html>

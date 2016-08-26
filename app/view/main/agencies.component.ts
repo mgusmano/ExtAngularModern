@@ -19,7 +19,7 @@ import { AgencyService }  from '../../service/agency.service';
 	`,
 	changeDetection: ChangeDetectionStrategy.Default
 })
-export class DataViewComponent { 
+export class AgenciesComponent { 
 	//private border:any = 20;
 	//private size: any = 'calc(100% - ' + (this.border * 2) + 'px)'
 

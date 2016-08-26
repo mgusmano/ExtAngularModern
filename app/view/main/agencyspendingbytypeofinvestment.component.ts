@@ -17,17 +17,15 @@ export class AgencySpendingByTypeOfInvestmentComponent {
 		this.pivotgridConfig = { 
 			left: this.border, top: this.border,
 			style: { width: this.size, height: this.size },
+
 			matrix: {
 				type: 'local',
-				viewLayoutType: 'outline',
-//				store: new AgencyPortfolioStore().extjsObject,
 				store: agencyService.getAgencyPortfolioStore(),
-				enableLocking: true,
-				plugins: [{ ptype: 'pivotdrilldown' }],
 				topAxis: [{ dataIndex:  'typeOfInvestment' }],
 				leftAxis: [{ dataIndex: 'agency', locked : true, header: 'Agency', id: 'agency', width: 375 }],
-				aggregate: [{ dataIndex: 'totalITspendingCYB', id: 'totalITspendingCYB', header: 'Total IT spending CYB', width: 300 }],
+				aggregate: [{ dataIndex: 'totalITspendingCYB', id: 'totalITspendingCYB', header: 'Total IT spending', width: 200 }],
 			}
+			
 		};
 
 	}

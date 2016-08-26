@@ -21,18 +21,23 @@ export class SideBarComponent {
 	private expanded: any = [];
 	private chevron: any = [];
 
+	private image: any = 'trump'; private name:any = 'Donald Trump';
+	//private image: any = 'clinton'; private name:any = 'Hillary Clinton';
+	//private image: any = 'obama'; private name:any = 'Barack Obama';
+
+
 	toggle(item){
 		this.expanded[item] = !this.expanded[item];
-		if (this.chevron[item] === 'down') {
-			this.chevron[item] = 'left';
-		} else {
+		if (this.chevron[item] === 'right') {
 			this.chevron[item] = 'down';
+		} else {
+			this.chevron[item] = 'right';
 		}
 	}
 
 	constructor(private router: Router){
 	this.expanded = [false,false,false,false,false,false];
-	this.chevron = ['down','down','down','down','down','down'];
+	this.chevron = ['right','right','right','right','right','right'];
 	}
 
 }

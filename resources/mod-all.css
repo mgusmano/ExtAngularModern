@@ -6752,7 +6752,7 @@ html.x-big {
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-neptune/sass/var/grid/cell/Base.scss:110 */
 .x-gridcell {
-    font: 400 0.86rem/1.28572em Roboto, sans-serif; /* mjg */
+    /* font: 400 0.86rem/1.28572em Roboto, sans-serif;  mjg */
     padding: 0.5em 1.14286em;
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-neptune/sass/var/grid/cell/Base.scss:115 */
@@ -6801,7 +6801,7 @@ html.x-big {
     border-color: rgba(17, 17, 17, 0.12);
     border-color: var(--divider-color);
     /* font: 400 1.16667rem/1em Roboto, sans-serif; mjg */
-    font: 400 0.86rem/1em Roboto, sans-serif;
+    /* font: 400 0.86rem/1em Roboto, sans-serif; mjg */
     padding: 0.57143em 1.14286em;
 }
 /* /Users/marcgusmano/throwdown/mod/ext/modern/theme-neptune/sass/var/grid/column/Column.scss:285 */
